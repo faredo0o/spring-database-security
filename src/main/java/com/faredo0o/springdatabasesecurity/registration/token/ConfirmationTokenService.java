@@ -3,6 +3,7 @@ package com.faredo0o.springdatabasesecurity.registration.token;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,7 @@ public class ConfirmationTokenService {
        throw new IllegalStateException("Token not found ");
     }
     public void setConfirmedAt(ConfirmationToken token){
+        token.setConfirmedAt(LocalDateTime.now());
         confirmationTokenRepository.save(token);
     }
 
